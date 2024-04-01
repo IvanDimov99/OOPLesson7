@@ -2,26 +2,26 @@ package ru.geekbrains.oop.lesson7.observer;
 
 import java.util.Random;
 
-public class Master implements Observer{
+public class Master implements Observer {
     private String name;
     private int salary;
 
-    public Master(String name){
+    public Master(String name) {
         this.name = name;
         salary = 80000;
     }
 
     @Override
-    public void receiveOffer(String nameCompany,Vacancy vacancy) {
+    public void receiveOffer(String nameCompany, Vacancy vacancy) {
         Random random = new Random();
         int salary = random.nextInt(vacancy.getMinSalary(), vacancy.getMaxSalary());
-        if (this.salary <= salary){
+        if (this.salary <= salary) {
             System.out.printf("Студент %s: Мне нужна эта работа! (компания: %s; вакансия: %s; заработная плата: %d)\n",
                     name, nameCompany, vacancy, salary);
             this.salary = salary;
-        }
-        else {
-            System.out.printf("Студент %s: Я найду работу получше! (компания: %s; вакансия: %s; заработная плата: %d)\n",
+        } else {
+            System.out.printf(
+                    "Студент %s: Я найду работу получше! (компания: %s; вакансия: %s; заработная плата: %d)\n",
                     name, nameCompany, vacancy, salary);
         }
     }
